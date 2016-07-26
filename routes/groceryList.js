@@ -19,8 +19,8 @@ router.get('/getList', function(request, response){
 
 router.post('/addItem', function(request, response){
   var data = request.body;
-  var createdItem = new groceryList({
-    name: data.name,
+  var createdItem = new GroceryList({
+    itemName: data.itemName,
     quantity: data.quantity
   });
 
@@ -32,6 +32,27 @@ router.post('/addItem', function(request, response){
   });
   response.sendStatus(200);
 });
+
+//Update an item from the grocery list!
+// ** THIS IS NOT FULLY TESTED- MAY NEED TO BE BROKEN OUT INTO TWO SEPERATE FUNCTIONS
+// ** ONE FOR THE QUANTITY AND ONE FOR THE ITEM'S NAME?
+// ** SEEMS TO WORK WITH POSTMAN CURRENTLY
+router.put('/updateItem', function(request, response){
+  var id = request.params.id;
+  var itnm = request.params.itemName;
+  // var qty = request.params.quantity;
+  var data = request.body;
+  GroceryList.findOneAndUpdate({_id: id}, {$set:{itemName:itnm}}, function(error){
+    if(error){
+      console.log('Could not update item! Error: ', error);
+      response.sendStatus(500);
+    } else {
+      console.log('List item successfully updated!');
+      response.sendStatus(200);
+    }
+  })
+});
+
 
 // Remove an item from the grocery list!
 
