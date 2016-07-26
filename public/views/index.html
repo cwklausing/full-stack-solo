@@ -3,12 +3,46 @@
   <head>
     <meta charset="utf-8">
     <title>Grocery List</title>
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles/stylesheet.css" />
-    <script src="vendor/angular/angular.min.js" charset="utf-8"></script>
-    <script src="scripts/MainController.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../styles/stylesheet.css" />
+    <script src="../vendor/angular/angular.min.js" charset="utf-8"></script>
+    <script src="../scripts/MainController.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-controller="MainController as main" class="container">
+    <header class="page-header">
+      <h1>Grocery List</h1>
+    </header>
+    <section class="col-lg-6 center-block">
+      <h3>
+        Add item to list:
+      </h3>
+      <p>
+        Name of item:
+      </p>
+      <input type="text" ng-model="main.name" />
+      <br />
+      <p>
+        Quantity:
+      </p>
+      <input type="number" ng-model="main.quantity" />
+      <br />
+      <button ng-click="main.submitListItem()" class="btn btn-md btn-primary">Submit item</button>
 
+    </section>
+    <article class="col-lg-6 right-block">
+      <ul>
+        <li ng-repeat="item in main.groceryListItems">
+          <p>
+            Item: {{item.name}}
+          </p>
+          <br />
+          <p>
+            Quantity: {{item.quantity}}
+          </p>
+          <button ng-click="main.deleteListItem(item._id)" class="btn btn-sm btn-danger">Delete List Item</button>
+        </li>
+      </ul>
+
+    </article>
   </body>
 </html>
