@@ -40,14 +40,13 @@ angular.module('groceryList').controller('MainController', function($http) {
     };
 
     //Update item in list *** Not tested! ****
-    vm.updateListItem = function(id){
-      var itnm = vm.updateItemName;
-      var qty = vm.updateItemQuantity;
-      $http.put('/groceryList/updateItem/' + id, itnm).then(function(response){
-        console.log(response);
-        getList();
-      })
-    }
+    vm.updateListItem = function(item){
+      console.log(item);
+      //$http.put('/groceryList/updateItem/' + id, itnm).then(function(response){
+      //  console.log(response);
+      //  getList();
+      //});
+    };
     // Toggle Show/Hide Update -- *****NEEDS TO BE COMPLETED*****
     // vm.toggle = function(){
     //

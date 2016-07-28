@@ -34,21 +34,13 @@
     <article class="col-lg-6 right-block">
         <ul>
             <li ng-repeat="item in main.groceryListItems">
-                <p>
-                    <em>Item:</em> {{item.itemName}}
-                </p>
-                <br />
-                <p>
-                    <em>Quantity:</em> {{item.quantity}}
-                </p>
-                <!-- WOULD LIKE MORE CLARITY BETWEEN LIST ITEMS HERE -->
-                <button ng-click="toggle()" class="btn btn-sm btn-warning">Update List Item</button>
-                  <div ng-show="updateItem">
+
+                <!-- cwklausing: updated ng-model so it captures the item, removed paragraph-->
                     <p>
-                      Item Name: <input type="text" ng-model="main.updateItemName" />
-                      Quantity: <input type="number" ng-model="main.updateItemQuantity" />
+                      Item Name: <input type="text" ng-model="item.itemName" />
+                      Quantity: <input type="number" ng-model="item.quantity" />
                     </p>
-                  </div>
+                <button ng-click="main.updateListItem(item)" class="btn btn-sm btn-warning">Update List Item</button>
                 <button ng-click="main.deleteListItem(item._id)" class="btn btn-sm btn-danger">Delete List Item</button>
             </li>
         </ul>
