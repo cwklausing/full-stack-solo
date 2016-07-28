@@ -41,11 +41,10 @@ angular.module('groceryList').controller('MainController', function($http) {
 
     //Update item in list *** Not tested! ****
     vm.updateListItem = function(item){
-      console.log(item);
-      //$http.put('/groceryList/updateItem/' + id, itnm).then(function(response){
-      //  console.log(response);
-      //  getList();
-      //});
+      $http.put('/groceryList/updateItem/', item).then(function(response){
+        console.log(response);
+        getList();
+      });
     };
     // Toggle Show/Hide Update -- *****NEEDS TO BE COMPLETED*****
     // vm.toggle = function(){

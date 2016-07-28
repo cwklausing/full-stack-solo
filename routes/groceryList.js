@@ -33,24 +33,30 @@ router.post('/addItem', function(request, response){
   response.sendStatus(200);
 });
 
-//Update an item from the grocery list!
-// ** THIS IS NOT FULLY TESTED- MAY NEED TO BE BROKEN OUT INTO TWO SEPERATE FUNCTIONS
-// ** ONE FOR THE QUANTITY AND ONE FOR THE ITEM'S NAME?
-// ** SEEMS TO WORK WITH POSTMAN CURRENTLY
+//Cwklausing: Updated the route to include a /:id
 router.put('/updateItem', function(request, response){
-  var id = request.params.id;
-  var itnm = request.params.itemName;
-  // var qty = request.params.quantity;
-  var data = request.body;
-  GroceryList.findOneAndUpdate({_id: id}, {$set:{itemName:itnm}}, function(error){
-    if(error){
-      console.log('Could not update item! Error: ', error);
-      response.sendStatus(500);
-    } else {
-      console.log('List item successfully updated!');
-      response.sendStatus(200);
-    }
-  })
+  var itnm = request.body;
+  var id = request.body.id;
+  console.log("request.body: ", request.body);
+
+  //Take this out once you put in mongoose
+  response.send(200);
+  /**
+   *
+  For Megan: You don't need to break this into separate functions--you pass two types of information
+   here--the id (passed in the url), and the data (which is the entire item object).
+   You're on the right track with findOneAndUpdate, but I'll leave it to you to finish updating
+   the database. Let me know if you have any questions.
+  **/
+  //GroceryList.findOneAndUpdate({_id: id}, {$set:{itemName:itnm}}, function(error){
+  //  if(error){
+  //    console.log('Could not update item! Error: ', error);
+  //    response.sendStatus(500);
+  //  } else {
+  //    console.log('List item successfully updated!');
+  //    response.sendStatus(200);
+  //  }
+  //})
 });
 
 
