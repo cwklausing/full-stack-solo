@@ -1,5 +1,3 @@
-# full-stack-solo
+# Feedback Edits for full-stack-solo challenge
 
-Things to be added and worked on:
-[ ] Update functionality for list items
-[ ] Clarify the html so that there is a clear distinction between adding and existing list items
+Edits to student code challenge to supplement written feedback.
